@@ -9,13 +9,13 @@ Variables
 ----------------------------*/
 
 :root {
-	--main-color: #e02f6b;
-	--blue: #0000ff;
-	--blue-dark: #18293c;
-	--orange: #ffa500;
-	--green-yellow: #cddc39;
-	--pink-light: #efa2b4;
-	--cyan-light: #aef1ee;
+	--main-color: #0091AD;
+	--blue: #1e3a5f;
+	--blue-dark: #0f1d2d;
+	--orange: #f5a623;
+	--green-yellow: #2d5a7b;
+	--pink-light: #e8f4f8;
+	--cyan-light: #f0f7fb;
 	--white: #ffffff;
 	--white-alpha-40: rgba(255, 255, 255, 0.40);
 	--white-alpha-25: rgba(255, 255, 255, 0.25);
@@ -34,6 +34,10 @@ Global Settings
 	outline: none;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 ::before,
 ::after {
 	box-sizing: border-box;
@@ -41,7 +45,7 @@ Global Settings
 
 body {
 	min-height: 100vh;
-	background-image: linear-gradient(to bottom right, var(--pink-light), var(--cyan-light));
+	background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 	background-attachment: fixed;
 	font-size: 16px;
 	font-family: 'Poppins', sans-serif;
@@ -64,9 +68,9 @@ body::before {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	background-color: var(--green-yellow);
+	background-color: transparent;
 	z-index: -1;
-	opacity: 0.12;
+	opacity: 0;
 }
 
 a {
@@ -95,11 +99,11 @@ ul {
 }
 
 section {
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
+	background-color: rgba(255, 255, 255, 0.95);
+	border: 1px solid rgba(200, 210, 220, 0.5);
 	min-height: calc(100vh - 70px);
-	border-radius: 30px;
-	backdrop-filter: var(--webkit-backdrop-filter-blur);
+	border-radius: 15px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 	display: none;
 }
 
@@ -168,15 +172,16 @@ section.fade-out {
 /* Custom Scrollbar */
 
 ::-webkit-scrollbar {
-	width: 5px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: var(--white);
+	background-color: rgba(200, 210, 220, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
 	background-color: var(--main-color);
+	border-radius: 4px;
 }
 
 
@@ -189,22 +194,23 @@ button {
 
 .btn {
 	line-height: 1;
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
-	padding: 10px 28px;
+	background-color: var(--main-color);
+	border: 2px solid var(--main-color);
+	padding: 12px 30px;
 	display: inline-block;
-	border-radius: 30px;
-	color: var(--main-color);
-	font-weight: 500;
+	border-radius: 5px;
+	color: var(--white);
+	font-weight: 600;
 	text-transform: capitalize;
 	font-family: inherit;
-	font-size: 16px;
+	font-size: 14px;
 	cursor: pointer;
 	user-select: none;
 	position: relative;
 	overflow: hidden;
 	vertical-align: middle;
-	transition: color 0.3s ease;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px rgba(0, 145, 173, 0.2);
 }
 
 .btn::before {
@@ -214,7 +220,7 @@ button {
 	top: 0;
 	height: 100%;
 	width: 0%;
-	background-color: var(--main-color);
+	background-color: var(--blue-dark);
 	z-index: -1;
 	transition: width 0.3s ease;
 }
@@ -225,6 +231,8 @@ button {
 
 .btn:hover {
 	color: var(--white);
+	box-shadow: 0 6px 20px rgba(0, 145, 173, 0.35);
+	transform: translateY(-2px);
 }
 
 
@@ -292,6 +300,7 @@ BG Section
 	width: calc(100% - 30px);
 	left: 50%;
 	transform: translateX(-50%);
+	z-index: -1;
 }
 
 .bg-circles div {
@@ -305,7 +314,7 @@ BG Section
 	background-color: var(--blue);
 	left: 5%;
 	top: 10%;
-	opacity: 0.3;
+	opacity: 0.05;
 	animation: zoomInOut 8s linear infinite;
 }
 
@@ -315,7 +324,7 @@ BG Section
 	background-color: var(--main-color);
 	left: 30%;
 	top: 50%;
-	opacity: 0.4;
+	opacity: 0.05;
 	animation: bounceTop 5s ease-in-out infinite;
 }
 
@@ -325,7 +334,7 @@ BG Section
 	background-color: var(--white);
 	right: -60px;
 	top: 40%;
-	opacity: 0.6;
+	opacity: 0;
 }
 
 .bg-circles .circle-4 {
@@ -334,7 +343,7 @@ BG Section
 	background-color: var(--orange);
 	top: 80%;
 	left: -30px;
-	opacity: 0.6;
+	opacity: 0;
 }
 
 
@@ -351,10 +360,12 @@ Overlay Section
 	background-color: transparent;
 	z-index: 200;
 	visibility: hidden;
+	pointer-events: none;
 }
 
 .overlay.active {
 	visibility: visible;
+	pointer-events: auto;
 }
 
 
@@ -369,8 +380,8 @@ PG Section
 	height: 100%;
 	width: 100%;
 	z-index: 999;
-	background-color: var(--white-alpha-25);
-	backdrop-filter: var(--webkit-backdrop-filter-blur);
+	background-color: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(5px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -379,6 +390,8 @@ PG Section
 
 .page-loader.fade-out {
 	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 }
 
 .page-loader div {
@@ -440,15 +453,16 @@ Header Section
 	height: 50px;
 	border: none;
 	cursor: pointer;
-	border-radius: 50%;
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
+	border-radius: 5px;
+	background-color: var(--main-color);
+	border: 2px solid var(--main-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 0 15px;
 	z-index: 1;
 	transition: opacity 0.5s ease-in-out;
+	box-shadow: 0 4px 12px rgba(0, 145, 173, 0.15);
 }
 
 .header .nav-toggler.hide {
@@ -459,7 +473,7 @@ Header Section
 .header .nav-toggler span {
 	height: 2px;
 	width: 24px;
-	background-color: var(--main-color);
+	background-color: var(--white);
 	position: relative;
 	transition: background-color 0.3s ease;
 }
@@ -475,7 +489,7 @@ Header Section
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: var(--main-color);
+	background-color: var(--white);
 	transition: all 0.3s ease;
 }
 
@@ -521,16 +535,17 @@ Header Section
 	min-height: calc(100vh - 10vh);
 	max-width: 1200px;
 	margin: auto;
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
-	backdrop-filter: var(--webkit-backdrop-filter-blur);
+	background-color: rgba(255, 255, 255, 0.98);
+	border: 1px solid rgba(200, 210, 220, 0.4);
+	backdrop-filter: blur(5px);
 	padding: 50px 0;
-	border-radius: 30px;
+	border-radius: 15px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	opacity: 0;
 	transition: all 0.5s ease;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .header.active .nav-inner {
@@ -557,9 +572,9 @@ Header Section
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	height: 50%;
-	width: 100%;
-	background-color: var(--white-alpha-25);
+	height: 2px;
+	width: 0%;
+	background-color: var(--main-color);
 	z-index: -1;
 	transition: width 0.5s ease;
 }
@@ -614,15 +629,16 @@ Home Section
 
 .home-img .img-box {
 	max-width: 360px;
-	background-color: var(--white-alpha-25);
-	border-radius: 50%;
-	border: 8px solid var(--white-alpha-25);
+	background-color: rgba(0, 145, 173, 0.08);
+	border-radius: 10px;
+	border: none;
 	margin: auto;
+	box-shadow: 0 8px 20px rgba(0, 145, 173, 0.1);
 }
 
 .home-img .img-box img {
 	width: 100%;
-	border-radius: 50%;
+	border-radius: 10px;
 }
 
 
@@ -641,11 +657,12 @@ About Section
 }
 
 .about-img .img-box {
-	background-color: var(--white-alpha-25);
+	background-color: rgba(0, 145, 173, 0.05);
 	max-width: 380px;
-	border: 1px solid var(--white-alpha-40);
+	border: 1px solid rgba(0, 145, 173, 0.15);
 	margin: auto;
 	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0, 145, 173, 0.08);
 }
 
 .about-img .img-box img {
@@ -664,12 +681,14 @@ About Section
 }
 
 .about-text .skill-item {
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
-	padding: 5px 15px;
+	background-color: rgba(0, 145, 173, 0.1);
+	border: 1px solid rgba(0, 145, 173, 0.25);
+	padding: 8px 16px;
 	text-transform: capitalize;
 	margin: 0 10px 10px 0;
-	border-radius: 20px;
+	border-radius: 5px;
+	color: var(--blue-dark);
+	font-weight: 500;
 }
 
 .about-tabs {
@@ -803,9 +822,16 @@ Portfolio Section
 
 .portfolio-item-thumbnail {
 	padding: 10px;
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
-	border-radius: 10px;
+	background-color: rgba(0, 145, 173, 0.05);
+	border: 1px solid rgba(0, 145, 173, 0.15);
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+}
+
+.portfolio-item-thumbnail:hover {
+	box-shadow: 0 8px 20px rgba(0, 145, 173, 0.15);
+	transform: translateY(-5px);
 }
 
 .portfolio-item-thumbnail img {
@@ -853,15 +879,16 @@ Portfolio Popup
 }
 
 .pp-content {
-	background-color: var(--white-alpha-25);
+	background-color: rgba(255, 255, 255, 0.98);
 	padding: 30px;
-	border-radius: 30px;
+	border-radius: 15px;
 	max-width: 900px;
 	width: 100%;
-	border: 1px solid var(--white-alpha-40);
-	backdrop-filter: var(--webkit-backdrop-filter-blur);
+	border: 1px solid rgba(200, 210, 220, 0.4);
+	backdrop-filter: blur(5px);
 	opacity: 0;
 	transform: scale(0.9);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .portfolio-popup.open .pp-content {
@@ -941,19 +968,22 @@ Contact Section
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	height: 40px;
-	width: 40px;
-	background-color: var(--white-alpha-25);
-	border: 1px solid var(--white-alpha-40);
+	height: 45px;
+	width: 45px;
+	background-color: rgba(0, 145, 173, 0.1);
+	border: 2px solid rgba(0, 145, 173, 0.25);
 	color: var(--main-color);
-	border-radius: 50%;
+	border-radius: 5px;
 	margin: 6px 4px 0 0;
 	transition: all 0.3s ease;
+	font-size: 18px;
 }
 
 .contact-info-item .social-links a:hover {
 	color: var(--white);
 	background-color: var(--main-color);
+	border-color: var(--main-color);
+	transform: translateY(-3px);
 }
 
 
