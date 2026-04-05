@@ -107,35 +107,7 @@
   display: none;
 }
 
-/* ── Header ── */
-.projects__header {
-  text-align: center;
-  margin-bottom: var(--space-16);
-}
-
-.projects__tag {
-  display: none;
-}
-
-.projects__title {
-  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
-  font-weight: var(--font-extrabold);
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-4);
-}
-
-.projects__title span {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.projects__underline,
-.projects__subtitle {
-  display: none;
-}
+/* ── Header details removed as it uses the standard .section-title now ── */
 
 /* ── Reveal animation ── */
 .projects__reveal {
@@ -296,22 +268,26 @@
   background: var(--white);
   border: 1px solid rgba(0, 145, 173, 0.1);
   border-radius: var(--radius-xl);
+  /* only apply transition for hover effects (transform and border-color) */
   transition: transform 0.3s ease, border-color 0.3s ease;
+  /* hidden initially */
   opacity: 0;
-  transform: translateY(20px);
-}
-
-.project-card::before {
-  display: none;
-}
-
-.project-card:hover::before {
-  opacity: 1;
 }
 
 .project-card--visible {
-  opacity: 1;
-  transform: translateY(0);
+  /* trigger entrance animation */
+  animation: cardEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .project-card:hover {
@@ -330,7 +306,7 @@
 
 .project-card__name {
   font-size: var(--text-lg);
-  font-weight: var(--font-bold);
+  font-weight: normal;
   color: var(--text-primary);
   letter-spacing: -0.01em;
   line-height: var(--leading-snug);

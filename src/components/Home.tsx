@@ -13,15 +13,15 @@ const Home: FC<HomeProps> = ({ isActive, onNavClick }) => {
         <div className="row align-items-center">
           <div className="home-text">
             <p>Hello, I'm</p>
-            <h1>John Developer</h1>
-            <h2>Full Stack Web Developer</h2>
-            <button 
+            <h1>Muhammad Hamza</h1>
+            <h2>AI/ML Engineer</h2>
+            <button
               className="btn"
               onClick={() => onNavClick('about')}
             >
               About Me
             </button>
-            <button 
+            <button
               className="btn"
               onClick={() => onNavClick('portfolio')}
             >
@@ -30,7 +30,7 @@ const Home: FC<HomeProps> = ({ isActive, onNavClick }) => {
           </div>
           <div className="home-img">
             <div className="img-box">
-              <img src="/img/profile-img.png" alt="profile-img" />
+              <img src="/img/profile_white.png" alt="profile-img" />
             </div>
           </div>
         </div>

@@ -157,7 +157,7 @@ function ProjectCard({ repo, index }: { repo: GitHubRepo; index: number }) {
     <article
       ref={ref}
       className={`project-card${inView ? ' project-card--visible' : ''}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ animationDelay: `${delay}ms` }}
       aria-labelledby={`proj-name-${repo.id}`}
     >
       {/* Header: name + language */}
@@ -310,7 +310,7 @@ const Portfolio: FC<PortfolioProps> = ({ isActive }) => {
   const { repos, loading, error, retry } = useGitHubStarred()
   const [showAll, setShowAll] = useState(false)
 
-  const { ref: headerRef, inView: headerVisible } = useInView<HTMLElement>({ threshold: 0.2, triggerOnce: true })
+  const { ref: headerRef, inView: headerVisible } = useInView<HTMLDivElement>({ threshold: 0.2, triggerOnce: true })
 
   const hasRepos    = repos.length > 0
   const isRateLimit = error?.type === 'rate_limit'
@@ -328,14 +328,14 @@ const Portfolio: FC<PortfolioProps> = ({ isActive }) => {
     >
       <div className="projects__container">
         {/* Section header */}
-        <header
+        <div
           ref={headerRef}
-          className={`projects__header projects__reveal${headerVisible ? ' visible' : ''}`}
+          className={`row projects__reveal${headerVisible ? ' visible' : ''}`}
         >
-          <h2 className="projects__title" id="projects-title">
-            Recent Work
-          </h2>
-        </header>
+          <div className="section-title">
+            <h2 id="projects-title">Recent Work</h2>
+          </div>
+        </div>
 
         {/* Rate-limit soft banner (shown only when repos are already cached) */}
         {isRateLimit && hasRepos && <RateLimitBanner message={error!.message} />}

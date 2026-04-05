@@ -7,36 +7,25 @@ interface AboutProps {
 }
 
 const skillsData = [
-  'React', 'TypeScript', 'Node.js', 'Python', 'MongoDB', 'PostgreSQL'
+  'Python', 'PyTorch', 'TensorFlow', 'Scikit-learn', 'LangChain', 'LangGraph', 'Hugging Face',
+  'OpenCV', 'FastAPI', "Flask", 'MySQL', 'MongoDB', 'PostgreSQL', "Github", "Git", "Docker"
 ]
 
 const educationData = [
   {
-    date: '2018 - 2022',
-    title: 'B.Tech Computer Science',
-    institution: 'Tech University',
+    date: '2023 - Present',
+    title: "Bachelor's in Artificial Intelligence",
+    institution: 'Fast Nuces, Islamabad',
     description: 'Studied computer science with focus on web technologies and software engineering'
-  },
-  {
-    date: '2016 - 2018',
-    title: 'Diploma in Information Technology',
-    institution: 'Community College',
-    description: 'Foundation courses in IT and web development basics'
   }
 ]
 
 const experienceData = [
   {
-    date: '2022 - Present',
-    title: 'Senior Developer',
-    company: 'Tech Solutions Inc',
+    date: 'June 2025 - Sep 2025',
+    title: 'AI Intern',
+    company: 'Software Productivity Strategists Inc',
     description: 'Leading frontend development team using React and modern web technologies'
-  },
-  {
-    date: '2021 - 2022',
-    title: 'Full Stack Developer',
-    company: 'Digital Agency',
-    description: 'Developed and maintained web applications using MERN stack'
   }
 ]
 
@@ -59,10 +48,8 @@ const About: FC<AboutProps> = ({ isActive, onNavClick }) => {
           </div>
           <div className="about-text">
             <p>
-              I am a passionate and skilled full-stack developer with expertise in modern web technologies.
-              I specialize in building responsive, user-friendly web applications using React, TypeScript, and Node.js.
-              With a strong foundation in computer science and continuous learning mindset, I stay updated with the latest
-              industry trends and best practices in software development.
+              AI student focused on building retrieval-augmented and agentic systems, with hands-on experience in LLM
+              pipelines, NLP, and deploying optimized ML models for real-time applications.
             </p>
             <h3>Skills</h3>
             <div className="skills">
