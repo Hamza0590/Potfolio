@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import './Home.css'
 
 interface HomeProps {
   isActive: boolean

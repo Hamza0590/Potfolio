@@ -1,0 +1,362 @@
+/* ------------------------------------
+   Fonts
+   ------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ------------------------------------
+   CSS Variables
+   ------------------------------------ */
+
+:root {
+	--main-color: #0091AD;
+	--blue: #1e3a5f;
+	--blue-dark: #0f1d2d;
+	--orange: #f5a623;
+	--green-yellow: #2d5a7b;
+	--pink-light: #e8f4f8;
+	--cyan-light: #f0f7fb;
+	--white: #ffffff;
+	--white-alpha-40: rgba(255, 255, 255, 0.40);
+	--white-alpha-25: rgba(255, 255, 255, 0.25);
+}
+
+/* ------------------------------------
+   Global Reset
+   ------------------------------------ */
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+	background-attachment: fixed;
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	color: var(--blue-dark);
+	line-height: 1.5;
+	overflow-x: hidden;
+	-webkit-tap-highlight-color: transparent;
+	padding: 35px 15px;
+}
+
+body.hide-scrolling {
+	overflow-y: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1,
+h2 {
+	font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 500;
+}
+
+img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+ul {
+	list-style: none;
+}
+
+/* ------------------------------------
+   Section Base
+   ------------------------------------ */
+
+section {
+	min-height: calc(100vh - 70px - 64px);
+	display: none;
+}
+
+section.active {
+	display: block;
+	animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+section.fade-out {
+	animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+/* ------------------------------------
+   Main Card
+   ------------------------------------ */
+
+.main {
+	max-width: 1200px;
+	margin: auto;
+	position: relative;
+	transition: all 0.5s ease-in-out;
+	background-color: rgba(255, 255, 255, 0.95);
+	border: 1px solid rgba(200, 210, 220, 0.5);
+	border-radius: 15px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.main.fade-out {
+	opacity: 0;
+}
+
+/* ------------------------------------
+   Layout Utilities
+   ------------------------------------ */
+
+.container {
+	padding: 0 40px;
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.align-items-center {
+	align-items: center;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.sec-padding {
+	padding: 80px 0;
+}
+
+.flex-end {
+	justify-content: flex-end;
+}
+
+/* ------------------------------------
+   Section Title
+   ------------------------------------ */
+
+.section-title {
+	padding: 0 15px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.section-title h2 {
+	font-size: 40px;
+	text-transform: capitalize;
+}
+
+/* ------------------------------------
+   Custom Scrollbar
+   ------------------------------------ */
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgba(200, 210, 220, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--main-color);
+	border-radius: 4px;
+}
+
+/* ------------------------------------
+   Buttons
+   ------------------------------------ */
+
+button {
+	font-family: inherit;
+	user-select: none;
+}
+
+.btn {
+	line-height: 1;
+	background-color: var(--main-color);
+	border: 2px solid var(--main-color);
+	padding: 12px 30px;
+	display: inline-block;
+	border-radius: 5px;
+	color: var(--white);
+	font-weight: 600;
+	text-transform: capitalize;
+	font-family: inherit;
+	font-size: 14px;
+	cursor: pointer;
+	user-select: none;
+	position: relative;
+	overflow: hidden;
+	vertical-align: middle;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px rgba(0, 145, 173, 0.2);
+}
+
+.btn::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 0%;
+	background-color: var(--blue-dark);
+	z-index: -1;
+	transition: width 0.3s ease;
+}
+
+.btn:hover::before {
+	width: 100%;
+}
+
+.btn:hover {
+	color: var(--white);
+	box-shadow: 0 6px 20px rgba(0, 145, 173, 0.35);
+	transform: translateY(-2px);
+}
+
+/* ------------------------------------
+   Animations
+   ------------------------------------ */
+
+@keyframes fadeOut {
+	0%   { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes zoomInOut {
+	0%, 100% { transform: scale(0.5); }
+	50%       { transform: scale(1); }
+}
+
+@keyframes bounceTop {
+	0%, 100% { transform: translateY(-50px); }
+	50%       { transform: translateY(0px); }
+}
+
+@keyframes spin {
+	0%   { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* ------------------------------------
+   Background Circles
+   ------------------------------------ */
+
+.bg-circles {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	max-width: 1200px;
+	width: calc(100% - 30px);
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: -1;
+}
+
+.bg-circles div {
+	position: absolute;
+	border-radius: 50%;
+}
+
+.bg-circles .circle-1 {
+	height: 60px;
+	width: 60px;
+	background-color: var(--blue);
+	left: 5%;
+	top: 10%;
+	opacity: 0.05;
+	animation: zoomInOut 8s linear infinite;
+}
+
+.bg-circles .circle-2 {
+	height: 80px;
+	width: 80px;
+	background-color: var(--main-color);
+	left: 30%;
+	top: 50%;
+	opacity: 0.05;
+	animation: bounceTop 5s ease-in-out infinite;
+}
+
+.bg-circles .circle-3 {
+	height: 120px;
+	width: 120px;
+	background-color: var(--white);
+	right: -60px;
+	top: 40%;
+	opacity: 0;
+}
+
+.bg-circles .circle-4 {
+	height: 50px;
+	width: 50px;
+	background-color: var(--orange);
+	top: 80%;
+	left: -30px;
+	opacity: 0;
+}
+
+/* ------------------------------------
+   Overlay
+   ------------------------------------ */
+
+.overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+	z-index: 200;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.overlay.active {
+	visibility: visible;
+	pointer-events: auto;
+}
+
+/* ------------------------------------
+   Responsive
+   ------------------------------------ */
+
+@media (max-width: 991px) {
+	.container {
+		padding: 0;
+	}
+}
+
+@media (max-width: 575px) {
+	.section-title h2 {
+		font-size: 35px;
+	}
+}

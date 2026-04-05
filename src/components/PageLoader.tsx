@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import './PageLoader.css'
 
 interface PageLoaderProps {
   isLoading: boolean

@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import './About.css'
 
 interface AboutProps {
   isActive: boolean
