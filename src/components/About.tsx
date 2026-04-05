@@ -58,9 +58,9 @@ const About: FC<AboutProps> = ({ isActive, onNavClick }) => {
           </div>
           <div className="about-text">
             <p>
-              I am a passionate and skilled full-stack developer with expertise in modern web technologies. 
-              I specialize in building responsive, user-friendly web applications using React, TypeScript, and Node.js. 
-              With a strong foundation in computer science and continuous learning mindset, I stay updated with the latest 
+              I am a passionate and skilled full-stack developer with expertise in modern web technologies.
+              I specialize in building responsive, user-friendly web applications using React, TypeScript, and Node.js.
+              With a strong foundation in computer science and continuous learning mindset, I stay updated with the latest
               industry trends and best practices in software development.
             </p>
             <h3>Skills</h3>
@@ -71,14 +71,14 @@ const About: FC<AboutProps> = ({ isActive, onNavClick }) => {
             </div>
 
             <div className="about-tabs">
-              <button 
+              <button
                 type="button"
                 className={`tab-item ${activeTab === 'education' ? 'active' : ''}`}
                 onClick={() => setActiveTab('education')}
               >
                 Education
               </button>
-              <button 
+              <button
                 type="button"
                 className={`tab-item ${activeTab === 'experience' ? 'active' : ''}`}
                 onClick={() => setActiveTab('experience')}
@@ -115,8 +115,8 @@ const About: FC<AboutProps> = ({ isActive, onNavClick }) => {
               </div>
             )}
 
-            <a href="/cv.pdf" target="_blank" className="btn">Download CV</a>
-            <button 
+            <a href="/Muhammad_Hamza_Resume.pdf" target="_blank" className="btn">Download CV</a>
+            <button
               className="btn"
               onClick={() => onNavClick('contact')}
             >
