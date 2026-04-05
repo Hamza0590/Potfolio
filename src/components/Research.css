@@ -1,0 +1,128 @@
+/* ------------------------------------
+   Research Section
+   ------------------------------------ */
+
+.research-section {
+	display: none;
+}
+
+.research-section.active {
+	display: block;
+	animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.research-list {
+	max-width: 900px;
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 15px;
+}
+
+.research-item {
+	background-color: var(--white);
+	border: 1px solid rgba(0, 145, 173, 0.1);
+	border-radius: 12px;
+	padding: 35px;
+	margin-bottom: 30px;
+	transition: transform 0.3s ease, border-color 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.research-item:hover {
+	transform: translateY(-4px);
+	border-color: var(--main-color);
+}
+
+.research-item-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 10px;
+}
+
+.research-title {
+	font-size: 22px;
+	font-weight: 600;
+	color: var(--blue-dark);
+	line-height: 1.4;
+	margin-right: 20px;
+}
+
+.research-year {
+	font-size: 14px;
+	font-family: inherit;
+	background: rgba(0, 145, 173, 0.1);
+	color: var(--main-color);
+	padding: 4px 12px;
+	border-radius: 20px;
+	border: 1px solid rgba(0, 145, 173, 0.2);
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+.research-venue {
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--main-color);
+	margin-bottom: 15px;
+}
+
+.research-desc {
+	font-size: 16px;
+	color: rgba(30, 58, 95, 0.8);
+	line-height: 1.6;
+	margin-bottom: 25px;
+}
+
+.research-footer {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.research-status {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 4px 12px;
+	border-radius: 4px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.status-published {
+	background-color: rgba(40, 167, 69, 0.1);
+	color: #28a745;
+	border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.status-ongoing {
+	background-color: rgba(255, 152, 0, 0.1);
+	color: #e65100;
+	border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.research-btn {
+	padding: 8px 20px;
+	font-size: 14px;
+}
+
+/* ------------------------------------
+   Responsive
+   ------------------------------------ */
+
+@media (max-width: 767px) {
+	.research-item-header {
+		flex-direction: column;
+	}
+
+	.research-year {
+		margin-top: 10px;
+		margin-left: 0;
+	}
+	
+	.research-item {
+		padding: 25px;
+	}
+}

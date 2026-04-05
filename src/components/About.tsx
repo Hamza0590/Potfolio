@@ -26,6 +26,12 @@ const experienceData = [
     title: 'AI Intern',
     company: 'Software Productivity Strategists Inc',
     description: 'Leading frontend development team using React and modern web technologies'
+  },
+  {
+    date: 'Jan 2026 - Present',
+    title: 'Lab Demonstrator',
+    company: 'Fast Nuces, Islamabad',
+    description: 'Assisting students with their lab work and providing technical support'
   }
 ]
 
