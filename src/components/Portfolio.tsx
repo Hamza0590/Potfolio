@@ -326,32 +326,15 @@ const Portfolio: FC<PortfolioProps> = ({ isActive }) => {
       id="portfolio"
       aria-labelledby="projects-title"
     >
-      {/* Decorative background */}
-      <div className="projects__bg-accent" aria-hidden="true" />
-      <div className="projects__dot-grid"  aria-hidden="true" />
-
       <div className="projects__container">
         {/* Section header */}
         <header
           ref={headerRef}
           className={`projects__header projects__reveal${headerVisible ? ' visible' : ''}`}
         >
-          <p className="projects__tag">
-            <span aria-hidden="true">✦</span> What I've been building
-          </p>
-
           <h2 className="projects__title" id="projects-title">
-            My <span>GitHub</span> Projects
+            Recent Work
           </h2>
-
-          <div className="projects__underline" aria-hidden="true">
-            <span /><span /><span />
-          </div>
-
-          <p className="projects__subtitle">
-            A curated collection of repositories I've starred — spanning AI,
-            machine learning, and full-stack web development.
-          </p>
         </header>
 
         {/* Rate-limit soft banner (shown only when repos are already cached) */}
