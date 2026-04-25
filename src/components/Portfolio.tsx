@@ -160,21 +160,11 @@ function ProjectCard({ repo, index }: { repo: GitHubRepo; index: number }) {
       style={{ animationDelay: `${delay}ms` }}
       aria-labelledby={`proj-name-${repo.id}`}
     >
-      {/* Header: name + language */}
+      {/* Header: name */}
       <div className="project-card__header">
         <h3 className="project-card__name" id={`proj-name-${repo.id}`}>
           {displayName}
         </h3>
-        {repo.language && (
-          <span className="project-card__lang">
-            <span
-              className="project-card__lang-dot"
-              style={{ background: langColor }}
-              aria-hidden="true"
-            />
-            {repo.language}
-          </span>
-        )}
       </div>
 
       {/* Description */}

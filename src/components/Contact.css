@@ -9,6 +9,8 @@
 .contact-section.active {
 	display: block;
 	animation: fadeIn 0.5s ease-in-out forwards;
+	padding-top: clamp(24px, 4vw, 48px);
+	padding-bottom: clamp(24px, 4vw, 48px);
 }
 
 @keyframes fadeIn {
@@ -34,7 +36,7 @@
 }
 
 .contact-info-item a {
-	color: var(--main-color);
+	color: var(--accent);
 	transition: color 0.3s ease;
 }
 
@@ -48,9 +50,9 @@
 	justify-content: center;
 	height: 45px;
 	width: 45px;
-	background-color: rgba(0, 145, 173, 0.1);
-	border: 2px solid rgba(0, 145, 173, 0.25);
-	color: var(--main-color);
+	background-color: var(--accent-soft);
+	border: 1px solid var(--rule);
+	color: var(--accent);
 	border-radius: 5px;
 	margin: 6px 4px 0 0;
 	transition: all 0.3s ease;
@@ -58,9 +60,9 @@
 }
 
 .contact-info-item .social-links a:hover {
-	color: var(--white);
-	background-color: var(--main-color);
-	border-color: var(--main-color);
+	color: var(--paper);
+	background-color: var(--accent);
+	border-color: var(--accent);
 	transform: translateY(-3px);
 }
 
@@ -71,7 +73,7 @@
 .contact-form {
 	width: 100%;
 	max-width: 600px;
-	margin: 50px auto 0;
+	margin: 30px auto 0;
 	padding: 0 15px;
 }
 
@@ -83,18 +85,18 @@
 	width: 100%;
 	height: 50px;
 	border-radius: 5px;
-	border: 1px solid rgba(0, 145, 173, 0.2);
-	background-color: var(--white);
+	border: 1px solid var(--rule);
+	background-color: var(--paper);
 	padding: 0 20px;
 	font-family: inherit;
 	font-size: 16px;
-	color: var(--blue-dark);
+	color: var(--ink);
 	transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form .input-control:focus {
-	border-color: var(--main-color);
-	box-shadow: 0 0 8px rgba(0, 145, 173, 0.15);
+	border-color: var(--accent);
+	box-shadow: 0 0 8px var(--accent-soft);
 }
 
 .contact-form textarea.input-control {

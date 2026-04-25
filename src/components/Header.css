@@ -1,140 +1,133 @@
-/* Top Navbar — sits inside the main card */
+/* Top Navbar — sticky, transparent-ish, no card chrome */
 
 .top-navbar {
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.97);
-	border-bottom: 1px solid rgba(200, 210, 220, 0.5);
-	border-radius: 15px 15px 0 0;
+	background: color-mix(in oklch, var(--page) 88%, transparent);
+	backdrop-filter: blur(10px) saturate(140%);
+	border-bottom: 1px solid var(--rule-soft);
 	position: sticky;
 	top: 0;
-	z-index: 10;
-	backdrop-filter: blur(8px);
+	z-index: 50;
 }
 
 .top-navbar-inner {
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: 0 var(--gutter);
+	height: 72px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 40px;
-	height: 64px;
+	gap: 24px;
 }
 
 .top-navbar-logo {
-	font-size: 18px;
-	font-weight: 700;
-	color: var(--main-color);
-	letter-spacing: 3px;
-	user-select: none;
+	display: inline-flex;
+	align-items: baseline;
+	gap: 8px;
+	font-family: var(--sans);
+	font-weight: 600;
+	font-size: 16px;
+	letter-spacing: -0.005em;
+	color: var(--ink);
 	flex-shrink: 0;
+}
+
+.logo-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--accent);
+	display: inline-block;
+	transform: translateY(-2px);
+}
+
+.logo-mono {
+	font-family: var(--mono);
+	font-size: 11px;
+	color: var(--ink-soft);
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+.top-nav-right {
+	display: flex;
+	align-items: center;
 }
 
 .top-nav-links {
 	display: flex;
 	align-items: center;
-	gap: 4px;
+	gap: 2px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
 .top-nav-link {
-	position: relative;
 	display: inline-flex;
-	align-items: center;
-	padding: 8px 22px;
-	font-size: 15px;
-	font-weight: 500;
+	align-items: baseline;
+	gap: 8px;
+	padding: 8px 14px;
+	font-size: 14px;
+	font-weight: 400;
 	font-family: inherit;
-	color: var(--blue-dark);
+	color: var(--ink-soft);
 	background: transparent;
 	border: none;
-	border-radius: 8px;
+	border-radius: 999px;
 	cursor: pointer;
-	transition: color 0.25s ease, background-color 0.25s ease;
-	isolation: isolate;
-	z-index: 1;
+	transition: color .2s ease, background-color .2s ease;
 }
 
-.nav-underline {
-	position: absolute;
-	bottom: 6px;
-	left: 22px;
-	right: 22px;
-	height: 2px;
-	background-color: var(--main-color);
-	border-radius: 2px;
-	transform: scaleX(0);
-	transform-origin: left center;
-	transition: transform 0.3s ease;
+.nav-num {
+	font-family: var(--mono);
+	font-size: 10px;
+	letter-spacing: .1em;
+	opacity: .7;
 }
 
-.top-nav-link:hover {
-	color: var(--main-color);
-	background-color: rgba(0, 145, 173, 0.07);
-}
-
-.top-nav-link:hover .nav-underline {
-	transform: scaleX(1);
-}
+.top-nav-link:hover { color: var(--ink); }
 
 .top-nav-link.active {
-	color: var(--main-color);
-	background-color: rgba(0, 145, 173, 0.11);
+	color: var(--ink);
+	background: var(--accent-soft);
 }
+.top-nav-link.active .nav-num { color: var(--accent); opacity: 1; }
 
-.top-nav-link.active .nav-underline {
-	transform: scaleX(1);
+/* Theme toggle */
+.theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	margin-left: 8px;
+	border: 1px solid var(--rule);
+	border-radius: 999px;
+	color: var(--ink-soft);
+	background: var(--paper);
+	cursor: pointer;
+	transition: color .2s ease, border-color .2s ease, transform .25s ease;
 }
-
-@media (max-width: 991px) {
-	.top-navbar-inner {
-		padding: 0 20px;
-	}
-
-	.top-nav-link {
-		padding: 8px 14px;
-		font-size: 14px;
-	}
-
-	.nav-underline {
-		left: 14px;
-		right: 14px;
-	}
+.theme-toggle:hover {
+	color: var(--accent);
+	border-color: var(--accent);
+	transform: rotate(-12deg);
 }
+.theme-toggle svg { width: 16px; height: 16px; display: block; }
 
-@media (max-width: 767px) {
-	.top-navbar-inner {
-		padding: 0 14px;
-	}
-
-	.top-nav-link {
-		padding: 7px 10px;
-		font-size: 13px;
-	}
-
-	.nav-underline {
-		left: 10px;
-		right: 10px;
-	}
+@media (max-width: 860px) {
+	.nav-num { display: none; }
+	.top-nav-link { padding: 8px 10px; font-size: 13px; }
+	.logo-mono { display: none; }
 }
 
 @media (max-width: 575px) {
-	.top-navbar-logo {
-		display: none;
-	}
-
-	.top-nav-links {
-		width: 100%;
-		justify-content: space-around;
-	}
-
-	.top-nav-link {
-		padding: 8px 6px;
-		font-size: 12px;
-	}
-
-	.nav-underline {
-		left: 6px;
-		right: 6px;
-	}
+	.top-navbar-inner { padding: 0 16px; height: 64px; }
+	.logo-name { display: none; }
+	.top-nav-links { gap: 0; }
+	.top-nav-link { padding: 8px 8px; font-size: 12px; }
+	.theme-toggle { width: 32px; height: 32px; }
 }

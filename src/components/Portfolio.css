@@ -7,27 +7,27 @@
   --max-width: 1200px;
   --container-padding: 15px;
 
-  --bg-primary: var(--white);
-  --glass-bg: var(--white);
-  --glass-border: rgba(0, 145, 173, 0.15);
+  --bg-primary: var(--paper);
+  --glass-bg: var(--paper);
+  --glass-border: var(--rule);
   --glass-blur: blur(0px);
 
-  --text-primary: var(--blue-dark);
-  --text-secondary: rgba(30, 58, 95, 0.8);
-  --accent-primary: var(--main-color);
-  --accent-secondary: var(--main-color);
-  --accent-glow: rgba(0, 145, 173, 0.08);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --accent-primary: var(--accent);
+  --accent-secondary: var(--accent);
+  --accent-glow: var(--accent-soft);
 
-  --border: rgba(0, 145, 173, 0.2);
-  --border-hover: var(--main-color);
-  --bg-card-hover: rgba(0, 145, 173, 0.05);
+  --border: var(--rule);
+  --border-hover: var(--accent);
+  --bg-card-hover: var(--rule-soft);
 
-  --gradient-primary: linear-gradient(135deg, var(--main-color) 0%, var(--main-color) 100%);
-  --gradient-text: linear-gradient(135deg, var(--main-color) 0%, var(--blue) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
+  --gradient-text: linear-gradient(135deg, var(--accent) 0%, var(--ink) 100%);
 
-  --shadow-md: 0 4px 15px rgba(0, 145, 173, 0.1);
-  --shadow-lg: 0 8px 25px rgba(0, 145, 173, 0.15);
-  --shadow-accent-lg: 0 6px 20px rgba(0, 145, 173, 0.25);
+  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --shadow-accent-lg: 0 6px 20px var(--accent-soft);
 
   --radius-md: 6px;
   --radius-lg: 8px;
@@ -54,8 +54,8 @@
   --text-3xl: 1.875rem;
   --text-5xl: 3rem;
 
-  --font-sans: 'Poppins', sans-serif;
-  --font-mono: monospace;
+  --font-sans: var(--sans);
+  --font-mono: var(--mono);
 
   --font-medium: 500;
   --font-semibold: 600;
@@ -87,8 +87,13 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 
@@ -130,9 +135,9 @@
   padding: var(--space-3) var(--space-6);
   margin-bottom: var(--space-8);
   font-size: var(--text-sm);
-  color: var(--text-secondary);
-  background: rgba(234, 179, 8, 0.07);
-  border: 1px solid rgba(234, 179, 8, 0.25);
+  color: var(--amber);
+  background: color-mix(in oklch, var(--amber), transparent 93%);
+  border: 1px solid color-mix(in oklch, var(--amber), transparent 75%);
   border-radius: var(--radius-lg);
   font-family: var(--font-mono);
 }
@@ -252,7 +257,7 @@
   font-size: var(--text-xs);
   font-family: var(--font-mono);
   font-weight: var(--font-bold);
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--accent-soft);
   letter-spacing: 0;
 }
 
@@ -264,14 +269,16 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: var(--space-6);
-  background: var(--white);
-  border: 1px solid rgba(0, 145, 173, 0.1);
-  border-radius: var(--radius-xl);
-  /* only apply transition for hover effects (transform and border-color) */
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  padding: var(--space-5) var(--space-6);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule-soft);
+  border-radius: var(--radius-lg);
+  /* smooth transition for all properties */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   /* hidden initially */
   opacity: 0;
+  position: relative;
 }
 
 .project-card--visible {
@@ -284,15 +291,37 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+.project-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scaleY(0.5);
+  transition: all 0.3s ease;
+}
+
 .project-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--main-color);
+  transform: translateX(12px);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.project-card:hover .project-card__name {
+  color: var(--accent);
 }
 
 /* ── Card header ── */
@@ -306,7 +335,7 @@
 
 .project-card__name {
   font-size: var(--text-lg);
-  font-weight: normal;
+  font-weight: var(--font-semibold);
   color: var(--text-primary);
   letter-spacing: -0.01em;
   line-height: var(--leading-snug);
@@ -375,7 +404,7 @@
 
 .project-card__topic:hover {
   opacity: 1;
-  background: rgba(59, 130, 246, 0.2);
+  background: var(--accent-glow);
 }
 
 /* ── Stats row (stars / forks) ── */
@@ -498,14 +527,14 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-md);
   transition: var(--transition-base);
   margin-top: var(--space-2);
 }
 
 .projects__retry-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.45);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ================================================

@@ -8,15 +8,21 @@ import Research from './components/Research'
 import PageLoader from './components/PageLoader'
 import './App.css'
 
+type Theme = 'light' | 'dark'
+
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [isLoading, setIsLoading] = useState(true)
   const [showPopup, setShowPopup] = useState(false)
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'light'
+    const saved = window.localStorage.getItem('theme') as Theme | null
+    if (saved === 'light' || saved === 'dark') return saved
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 600)
+    const timer = setTimeout(() => setIsLoading(false), 600)
     return () => clearTimeout(timer)
   }, [])
 
@@ -24,54 +30,47 @@ function App() {
     document.body.classList.toggle('hide-scrolling', showPopup)
   }, [showPopup])
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    try { window.localStorage.setItem('theme', theme) } catch { /* ignore */ }
+  }, [theme])
+
   const handleNavClick = (sectionId: string) => {
     if (sectionId === activeSection) return
     setActiveSection(sectionId)
     window.scrollTo(0, 0)
   }
 
-
+  const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'))
 
   return (
     <>
       <PageLoader isLoading={isLoading} />
 
-      <div className="bg-circles">
-        <div className="circle-1"></div>
-        <div className="circle-2"></div>
-        <div className="circle-3"></div>
-        <div className="circle-4"></div>
-      </div>
-
       {showPopup && (
         <div className="overlay active" onClick={() => setShowPopup(false)} />
       )}
 
-      {/* .main is the single white card — navbar lives at the top of it */}
-      <div className="main">
-        <Header activeSection={activeSection} onNavClick={handleNavClick} />
+      <Header
+        activeSection={activeSection}
+        onNavClick={handleNavClick}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
+      <div className="main">
         <Home
           isActive={activeSection === 'home'}
           onNavClick={handleNavClick}
-        //canGoBack={canGoBack}
-        //onBack={handleBack}
         />
         <About
           isActive={activeSection === 'about'}
           onNavClick={handleNavClick}
         />
-        <Portfolio
-          isActive={activeSection === 'portfolio'}
-        />
-        <Research
-          isActive={activeSection === 'research'}
-        />
-        <Contact
-          isActive={activeSection === 'contact'}
-        />
+        <Portfolio isActive={activeSection === 'portfolio'} />
+        <Research  isActive={activeSection === 'research'} />
+        <Contact   isActive={activeSection === 'contact'} />
       </div>
-
     </>
   )
 }
