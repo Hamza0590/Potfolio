@@ -3,7 +3,6 @@ import {
   Code2,
   Brain,
   Database,
-  Globe,
   Cloud,
   Cpu,
   Eye
